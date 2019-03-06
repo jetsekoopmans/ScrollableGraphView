@@ -817,15 +817,16 @@ import UIKit
             label.text = (dataSource?.label(atIndex: point) ?? "")
             label.textColor = ref.dataPointLabelColor
             label.font = ref.dataPointLabelFont
-            
-            label.sizeToFit()
+            label.numberOfLines = 2
+            label.textAlignment = .center
             
             // self.range.min is the current ranges minimum that has been detected
             // self.rangeMin is the minimum that should be used as specified by the user
             let rangeMin = (shouldAdaptRange) ? self.range.min : self.rangeMin
             let position = calculatePosition(atIndex: point, value: rangeMin)
             
-            label.frame = CGRect(origin: CGPoint(x: position.x - label.frame.width / 2, y: position.y + ref.dataPointLabelTopMargin), size: label.frame.size)
+            label.frame = CGRect(origin: CGPoint(x: position.x - 50, y: position.y + ref.dataPointLabelTopMargin), size: CGSize(width: 100, height: 30
+            ))
             
             let _ = labelsView.subviews.filter { $0.frame == label.frame }.map { $0.removeFromSuperview() }
             
